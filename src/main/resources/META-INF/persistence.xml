@@ -4,6 +4,9 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="U4-W3-D2pu">
         <class>Solis3D.entities.Evento</class>
+        <class>Solis3D.entities.Location</class>
+        <class>Solis3D.entities.Partecipazione</class>
+        <class>Solis3D.entities.Persona</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/gestioneeventi"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>

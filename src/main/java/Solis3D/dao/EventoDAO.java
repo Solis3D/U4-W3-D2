@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.UUID;
+
 public class EventoDAO {
     private final EntityManager entityManager;
 
@@ -26,16 +28,16 @@ public class EventoDAO {
         //infine faccio il commit in modo che venga inviato al DB e venga aggiunto alla tabella
         transaction.commit();
 
-        System.out.println("Evento" + nuovoEvento.getTitolo() + " salvato!");
+        System.out.println("Evento " + nuovoEvento.getTitolo() + " salvato!");
     }
 
-    public Evento getById(long id){
+    public Evento getById(UUID id){
         Evento trovato = entityManager.find(Evento.class, id);
         if (trovato == null) throw new NoMatchException(id);
         return trovato;
     }
 
-    public void delete(long id) {
+    public void delete(UUID id) {
         Evento trovato = this.getById(id);
 
         EntityTransaction transaction = this.entityManager.getTransaction();
