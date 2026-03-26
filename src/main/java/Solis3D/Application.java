@@ -11,6 +11,8 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 public class Application {
@@ -26,7 +28,7 @@ public class Application {
 
         //LOCATION
         Location location1 = new Location("Stadio Diego Armando Maradona" , "Napoli");
-        //locationDAO.save(location1);
+        locationDAO.save(location1);
         Location locationConcerto = new Location("Arena di Verona", "Verona");
 
         //EVENTO
@@ -35,11 +37,18 @@ public class Application {
 
         //PERSONA
         Persona persona1 = new Persona("Ugo", "Sacco", "ugosacco@gmail.com", LocalDate.parse("1998-10-30"), Sesso.M);
-        //personaDAO.save(persona1);
+        personaDAO.save(persona1);
+        Persona persona2 = new Persona("Paolo", "Sacchetto", "paolosacchetto@gmail.com", LocalDate.parse("1985-05-05"), Sesso.M);
+        personaDAO.save(persona2);
+        Set<Persona> atleti = new HashSet<>();
+        atleti.add(persona1);
+        atleti.add(persona2);
 
+        GaraDiAtletica gara1 = new GaraDiAtletica("100 metri", LocalDate.parse("2026-04-28"), "Finalissima regionale", TipoEvento.PUBBLICO, 300, location1, atleti, persona2);
+        eventoDAO.save(gara1);
         //PARTECIPAZIONE
-       //Partecipazione partecipazione1 = new Partecipazione(persona1,evento1,StatoPartecipazione.DA_CONFERMARE);
-        //partecipazioneDAO.save(partecipazione1);
+       /* Partecipazione partecipazione1 = new Partecipazione(persona1,evento1,StatoPartecipazione.DA_CONFERMARE);
+        partecipazioneDAO.save(partecipazione1);*/
 
         //CONCERTO
         Concerto concerto1 = new Concerto("Pink Floyd 2026", LocalDate.parse("2026-03-26"), "Il grande ritorno di Gilmour", TipoEvento.PUBBLICO, 40000, locationConcerto, GenereConcerto.ROCK, false);
