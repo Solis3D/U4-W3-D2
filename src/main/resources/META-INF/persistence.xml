@@ -7,6 +7,8 @@
         <class>Solis3D.entities.Location</class>
         <class>Solis3D.entities.Partecipazione</class>
         <class>Solis3D.entities.Persona</class>
+        <class>Solis3D.entities.Concerto</class>
+        <class>Solis3D.entities.PartitaDiCalcio</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/gestioneeventi"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>

@@ -9,6 +9,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "eventi")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "categoria_evento")
 
 public class Evento {
     @Id
@@ -42,6 +44,10 @@ public class Evento {
         this.tipoEvento = tipoEvento;
         this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
         this.location = location;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getTitolo() {

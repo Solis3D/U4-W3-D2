@@ -27,9 +27,10 @@ public class Application {
         //LOCATION
         Location location1 = new Location("Stadio Diego Armando Maradona" , "Napoli");
         //locationDAO.save(location1);
+        Location locationConcerto = new Location("Arena di Verona", "Verona");
 
         //EVENTO
-        Evento evento1 = new Evento("Napoli - Juventus", LocalDate.parse("2026-03-25"), "Partita di Serie A", TipoEvento.PUBBLICO, 50000,location1);
+        /*Evento evento1 = new Evento("Napoli - Juventus", LocalDate.parse("2026-03-25"), "Partita di Serie A", TipoEvento.PUBBLICO, 50000,location1);*/
         //eventoDAO.save(evento1);
 
         //PERSONA
@@ -37,15 +38,19 @@ public class Application {
         //personaDAO.save(persona1);
 
         //PARTECIPAZIONE
-        Partecipazione partecipazione1 = new Partecipazione(persona1,evento1,StatoPartecipazione.DA_CONFERMARE);
+       //Partecipazione partecipazione1 = new Partecipazione(persona1,evento1,StatoPartecipazione.DA_CONFERMARE);
         //partecipazioneDAO.save(partecipazione1);
 
+        //CONCERTO
+        Concerto concerto1 = new Concerto("Pink Floyd 2026", LocalDate.parse("2026-03-26"), "Il grande ritorno di Gilmour", TipoEvento.PUBBLICO, 40000, locationConcerto, GenereConcerto.ROCK, false);
+        locationDAO.save(locationConcerto);
+        eventoDAO.save(concerto1);
+        //PARTITA DI CALCIO
+        PartitaDiCalcio partitaNapoli = new PartitaDiCalcio("Napoli-Juventus", LocalDate.parse("2026-03-26"), "Partita di Serie A", TipoEvento.PUBBLICO, 50000, location1, "Napoli", "Juventus", "Napoli", 3, 0);
+        locationDAO.save(location1);
+        eventoDAO.save(partitaNapoli);
 
-        //GET BY ID
-        System.out.println(eventoDAO.getById(UUID.fromString("f2a165fa-5dbc-4ddf-9848-4a0102b4f51b")));
-        System.out.println(personaDAO.getById(UUID.fromString("8b588171-e3e7-43e2-9995-69df48c61e96")));
-        System.out.println(locationDAO.getById(UUID.fromString("f5acabf9-5c76-4a87-9c54-a5cdce287853")));
-        System.out.println(partecipazioneDAO.getById(UUID.fromString("abc9bc63-e00a-427c-97e2-7a938321b0b6")));
+
 
         entityManager.close();
         entityManagerFactory.close();
